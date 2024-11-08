@@ -1,0 +1,173 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.17162217949183783 -0.0935239922462891 0.9807135618419823 4.123232485746542
+  position 0.4373679546500491 0.8628888924815237 0.42444758000966804
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation -0.07 0 0
+}
+Robot {
+  children [
+    Group {
+      children [
+        Pose {
+          translation 0 0 0.004
+          children [
+            DEF base Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+              }
+              geometry Box {
+                size 0.14 0.14 0.004
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 0 0.0336
+          children [
+            DEF body Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 0
+              }
+              geometry Box {
+                size 0.102 0.102 0.0512
+              }
+            }
+          ]
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 0 -1
+            suspensionAxis 0.01 0 0
+          }
+          device [
+            RotationalMotor {
+              name "joint"
+            }
+          ]
+          endPoint Solid {
+            translation 0 0 0.06120000000000001
+            rotation 0 0 1 1.4692635613324305e-05
+            children [
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  anchor 0 0 0.021
+                  suspensionAxis 0.01 0 0
+                }
+                device [
+                  RotationalMotor {
+                    name "joint2"
+                  }
+                ]
+                endPoint Solid {
+                  translation 0 0.00814 0.0952
+                  rotation 1 0 0 0
+                  children [
+                    Solid {
+                      children [
+                        HingeJoint {
+                          jointParameters HingeJointParameters {
+                            axis -1 0 0
+                            anchor 0 0 0.0642
+                          }
+                          device [
+                            RotationalMotor {
+                              name "joint3"
+                            }
+                          ]
+                          endPoint Solid {
+                            translation 0 0.056949445295305115 0.06179985822146928
+                            rotation -2.5003019270782925e-08 0.9999999999999998 4.006172263299093e-18 1.032382731180714e-07
+                            children [
+                              HingeJoint {
+                                jointParameters HingeJointParameters {
+                                  anchor 0 0.0978 0
+                                }
+                                device [
+                                  RotationalMotor {
+                                    name "joint4"
+                                  }
+                                ]
+                                endPoint Solid {
+                                  translation 0 0.0978 0
+                                  rotation 1 0 0 0
+                                  children [
+                                    Shape {
+                                      appearance PBRAppearance {
+                                        baseColor 0 1 0
+                                      }
+                                      geometry Box {
+                                        size 0.02 0.05 0.018
+                                      }
+                                    }
+                                  ]
+                                  name "solid(1)"
+                                }
+                              }
+                              Shape {
+                                appearance PBRAppearance {
+                                  baseColor 0 1 0
+                                }
+                                geometry Box {
+                                  size 0.02 0.174 0.018
+                                }
+                              }
+                            ]
+                          }
+                        }
+                        Shape {
+                          appearance PBRAppearance {
+                            baseColor 0 1 0
+                          }
+                          geometry Box {
+                            size 0.018 0.02 0.1401
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                  name "solid(2)"
+                }
+              }
+              Solid {
+                translation 0 0.00814 0.02155
+                children [
+                  Shape {
+                    appearance PBRAppearance {
+                      baseColor 0 1 0
+                    }
+                    geometry Box {
+                      size 0.015 0.02 0.0311
+                    }
+                  }
+                ]
+              }
+              DEF rot_vertical Shape {
+                appearance PBRAppearance {
+                  baseColor 0 1 0
+                }
+                geometry Cylinder {
+                  height 0.012
+                  radius 0.049
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+  controller "maxarm"
+}
